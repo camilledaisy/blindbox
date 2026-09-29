@@ -140,6 +140,19 @@ export const CARDS = [
     color: '#ffd166',
     emoji: '👑',
   },
+  {
+    id: '011',
+    no: '011',
+    name: 'Derpmille',
+    rarity: 'rare',
+    image: 'images/cards/011-derpmille.jpg',
+    imagePosition: '45% 30%',
+    description: 'Was told to smile for the photo. Chose chaos instead. Has not changed since.',
+    era: 'The Early Years',
+    stats: { Derp: 100, Cuteness: 99, 'Pose Game': 12, Mischief: 87 },
+    color: '#ffc8dd',
+    emoji: '🤪',
+  },
 ];
 
 /** Joke cards that only drop via ODDS.error in config.js. */

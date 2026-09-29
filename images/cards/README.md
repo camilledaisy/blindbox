@@ -15,6 +15,7 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 008 Daisy                 | `008-daisy.jpg`                   |
 | 009 Childhood Throwback   | `009-childhood-throwback.jpg`     |
 | 010 Legendary Camille     | `010-legendary-camille.jpg`       |
+| 011 Derpmille             | `011-derpmille.jpg`               |
 | ??? ERROR CAMILLE         | `err-error-camille.jpg`           |
 
 Tips
