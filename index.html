@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Camille Blind Box</title>
+  <meta name="description" content="Which Camille will you pull? Open a birthday blind box and collect them all." />
+  <meta name="theme-color" content="#ffb13b" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='14' width='48' height='44' rx='4' fill='%23ff8a1f' stroke='%233a2418' stroke-width='4'/%3E%3Crect x='4' y='6' width='56' height='14' rx='3' fill='%23ffd84d' stroke='%233a2418' stroke-width='4'/%3E%3Ctext x='32' y='50' font-size='26' font-family='sans-serif' font-weight='900' text-anchor='middle' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Silkscreen:wght@400;700&family=Titan+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/box.css" />
+  <link rel="stylesheet" href="css/card.css" />
+  <link rel="stylesheet" href="css/reveal.css" />
+  <link rel="stylesheet" href="css/dex.css" />
+</head>
+<body data-page="home">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>✦ HAPPY BIRTHDAY CAMILLE ✦ COLLECT THEM ALL ✦ <b data-count>10</b> CAMILLES + ??? ✦ ONE BOX PER WISH ✦ NO PEEKING ✦ TRADE YOUR DUPES ✦ ハッピーバースデー ✦&nbsp;</span>
+      <span>✦ HAPPY BIRTHDAY CAMILLE ✦ COLLECT THEM ALL ✦ <b data-count>10</b> CAMILLES + ??? ✦ ONE BOX PER WISH ✦ NO PEEKING ✦ TRADE YOUR DUPES ✦ ハッピーバースデー ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <button class="logo" id="logo" type="button" aria-label="Camille Blind Box">
+      <span class="logo__mark" aria-hidden="true">?</span>
+      <span class="logo__text">CAMILLE<br />BLIND BOX</span>
+    </button>
+    <nav class="tabs" aria-label="Main">
+      <a href="#/" class="tab" data-route="home"><span class="tab__cursor" aria-hidden="true">▶</span>BOX</a>
+      <a href="#/dex" class="tab" data-route="dex"><span class="tab__cursor" aria-hidden="true">▶</span>CAMILLEDEX <span class="tab__count" id="nav-count">0/10</span></a>
+    </nav>
+    <span class="lucky" id="lucky" hidden title="Lucky charm active: boosted odds on your next box">🍀</span>
+    <button class="iconbtn" id="mute" type="button" aria-label="Mute sounds">
+      <svg class="ico-on" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M2 6h3v4H2zM5 5h1v6H5zM6 4h1v8H6zM7 3h1v10H7zM10 5h1v1h-1zM11 6h1v4h-1zM10 10h1v1h-1zM12 3h1v1h-1zM13 4h1v8h-1zM12 12h1v1h-1z"/></svg>
+      <svg class="ico-off" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M2 6h3v4H2zM5 5h1v6H5zM6 4h1v8H6zM7 3h1v10H7zM10 5h1v1h-1zM11 6h1v1h-1zM12 7h1v2h-1zM13 6h1v1h-1zM14 5h1v1h-1zM11 9h1v1h-1zM10 10h1v1h-1zM13 9h1v1h-1zM14 10h1v1h-1z"/></svg>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- HOME ------------------------------------------------------------- -->
+    <section class="view view--home" data-view="home">
+      <div class="hero">
+        <p class="hero__kicker"><span>★ BIRTHDAY EDITION</span><span>SERIES 01 ★</span></p>
+        <h1 class="hero__title"><span class="t1">CAMILLE</span><span class="t2">BLIND BOX</span></h1>
+        <p class="hero__sub">Which Camille will you pull?</p>
+      </div>
+
+      <div class="stagebox">
+        <div class="stickers" aria-hidden="true">
+          <span class="stk stk--burst">FREE!<small>1 EACH</small></span>
+          <span class="stk stk--daisy">✿</span>
+          <span class="stk stk--jp">ラッキー!</span>
+          <span class="stk stk--star">★</span>
+          <span class="stk stk--tag"><b data-count>10</b> + ???<small>TO COLLECT</small></span>
+          <span class="stk stk--spark s1">✦</span>
+          <span class="stk stk--spark s2">✧</span>
+          <span class="stk stk--spark s3">✦</span>
+        </div>
+        <div class="bubble" id="box-bubble" aria-live="polite"></div>
+        <div class="hero__box" id="box-slot"></div>
+      </div>
+
+      <div class="hero__cta">
+        <button class="btn btn--big" id="open-btn" type="button">
+          <span class="btn__shine" aria-hidden="true"></span>OPEN YOUR BLIND BOX
+        </button>
+        <p class="hero__hint"><span class="blink" aria-hidden="true">▶</span> Some Camilles are <em>very</em> rare. Compare pulls with your friends!</p>
+        <details class="rates">
+          <summary>DROP RATES</summary>
+          <div id="rates-body"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CAMILLEDEX ------------------------------------------------------- -->
+    <section class="view view--dex" data-view="dex" hidden>
+      <div id="dex-root"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>made with ♥ for camille’s birthday · 2026</span>
+    <span class="foot__secret" title="try typing 'daisy'">✿</span>
+  </footer>
+
+  <div id="stage-root"></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <div class="file-warning" id="file-warning" hidden>
+    <b>Almost there!</b> This site needs to be opened through a local web server (browsers block it when you double-click the file).
+    In this folder run <code>npx serve</code> or <code>python3 -m http.server</code>, then open the address it prints.
+  </div>
+  <script>
+    if (location.protocol === 'file:') document.getElementById('file-warning').hidden = false;
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

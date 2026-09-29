@@ -1,0 +1,84 @@
+# ✿ Camille Blind Box
+
+A tiny collectible game for Camille's birthday. Each friend opens a digital blind box and pulls a random **Camille Card**. Some are much rarer than others. Collect them all in **THE CAMILLEDEX**.
+
+No build step and no dependencies: it's plain HTML, CSS and JavaScript modules.
+
+## Run it locally
+
+Browsers block JavaScript modules on `file://`, so serve the folder with any static server:
+
+```bash
+npx serve .            # or
+python3 -m http.server
+```
+
+Then open the address it prints (for example http://localhost:3000).
+
+## Put it online (free)
+
+**GitHub Pages:** go to repo **Settings → Pages**, set the source to **Deploy from a branch**, pick the branch and `/ (root)`, and save. Netlify, Vercel or Cloudflare Pages also work: drag and drop the folder, no build command needed.
+
+## Customise
+
+| I want to…                              | Edit                                                   |
+| --------------------------------------- | ------------------------------------------------------ |
+| Add my photos                           | Drop them in `images/cards/` (see below)               |
+| Change card names, quotes, stats, eras  | `js/data/cards.js`                                     |
+| Add or remove cards                     | `js/data/cards.js`: the Camilledex updates itself      |
+| Change rarity odds / messages           | `js/config.js` → `RARITIES`                            |
+| Change Shiny / Error Camille odds       | `js/config.js` → `ODDS`                                |
+| Change the secret logo message          | `js/config.js` → `SECRET_LOGO`                         |
+| Use real sound files                    | Put files in `sounds/`, map them in `SOUND_FILES`      |
+
+### Photos
+
+Each card has an `image` path such as `images/cards/005-bookworm-camille.jpg`. Save your photo with that exact name and it replaces the placeholder automatically. You can also point `image` at any filename you like. Portrait-ish photos crop best. If a face gets cut off, add `imagePosition: '50% 20%'` to that card to move the crop.
+
+### Preview any card
+
+Add `?preview=<id>` to the URL to force a specific pull, e.g. `/?preview=010` or `/?preview=003&shiny` or `/?preview=err`. Preview pulls are **not** saved to your collection, so you can test photos and animations freely.
+
+## How it works
+
+```
+index.html            page shell
+css/                  base · box (3D blind box) · card · reveal · dex
+js/config.js          rarities, odds, messages, easter-egg text
+js/data/cards.js      the card list
+js/main.js            routing (#/ and #/dex), nav, wiring
+js/components/
+  BlindBox.js         CSS-3D box with shake / glow / lid-pop
+  Card.js             the trading card (+ back face, locked silhouette)
+  CardReveal.js       the opening sequence and "YOU PULLED..." screen
+  CollectionGrid.js   Camilledex grid
+  CardDetail.js       big card modal with 3D tilt + holo
+  RarityBadge.js      ★★★ RARE badge
+  ProgressTracker.js  "7 / 10 discovered" LCD bar
+js/lib/
+  gacha.js            weighted rolls + probability math
+  store.js            collection saved in localStorage
+  sfx.js              synthesised sound effects + mute
+  particles.js        canvas sparkles / confetti
+  cardImage.js        SAVE CARD → PNG (share sheet on phones)
+  tilt.js · ui.js · placeholder.js · easterEggs.js
+  trade.js            architecture sketch for future trading
+```
+
+**Rarity drama:** the reveal escalates by rarity *before* the card is shown: shake length and intensity, glow colour, darkness, particles, flashes, light rays, card spins. Secret Rares fake you out first. Nothing names the rarity until the card flips.
+
+**Trading (later):** every pull is stored as its own copy with a unique `uid` in `store.log`, and each friend can already save a collector name. `js/lib/trade.js` explains the planned offer and transport design.
+
+## Easter eggs (spoilers!)
+
+<details>
+<summary>Reveal</summary>
+
+- Click the logo 5 times fast → secret message + a 🍀 lucky charm (boosted odds on the next box)
+- Poke the box on the home screen
+- Type `daisy`, `cake`, `camille` or `birthday` anywhere
+- Konami code (↑↑↓↓←→←→BA) → 1989 handheld mode
+- ERROR CAMILLE: a 1-in-300 glitched joke card
+- Shiny variants of any card (1 in 32)
+- Milestone messages as you open more boxes
+</details>
