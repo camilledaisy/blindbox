@@ -1,4 +1,4 @@
-# ✿ Camille Blind Box
+# ✿ Camille Cards
 
 A tiny collectible game for Camille's birthday. Each friend rips open a digital booster pack of 5 **Camille Cards**. The last card is always the rare slot. Collect them all in **THE CAMILLEDEX**.
 

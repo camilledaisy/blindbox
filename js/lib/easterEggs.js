@@ -104,7 +104,7 @@ export function emojiRain(emoji, count = 36) {
 
 function consoleNote() {
   console.log(
-    '%c✿ CAMILLE BLIND BOX ✿%c\nOh, a developer. Hi!\nNo, you cannot edit the odds from here. (…well. You could. But Camille would know.)',
+    '%c✿ CAMVERSE ✿%c\nOh, a developer. Hi!\nNo, you cannot edit the odds from here. (…well. You could. But Camille would know.)',
     'font: 700 16px sans-serif; color: #fff; background: #ff8a1f; padding: 6px 10px; border-radius: 4px;',
     'color: #8a6a4a; font: 12px monospace;',
   );

@@ -47,7 +47,7 @@ export function CardBack() {
       h('span.card__back-corner.tr', { html: pixelStar() }),
       h('span.card__back-corner.bl', { html: pixelStar() }),
       h('span.card__back-corner.br', { html: pixelStar() }),
-      h('div.card__back-seal', {}, h('span', {}, 'C'), h('small', {}, 'BLIND BOX')),
+      h('div.card__back-seal', {}, h('span', {}, 'C'), h('small', {}, 'CARDS')),
       h('div.card__back-text', {}, `${SET.edition} · ${SET.series}`),
     ),
   );
@@ -89,7 +89,7 @@ export function Card(card, { shiny = false, withBack = false, faceDown = false }
       h('div.card__rarity', {}, RarityBadge(card.rarity, { size: 'sm', shiny }), h('span.card__set', {}, isError ? '???/???' : `${card.no}/${total}`)),
       h('p.card__desc', {}, `“${card.description}”`),
       Stats(card.stats),
-      h('footer.card__foot', {}, h('span.card__logo', {}, '✿ CAMILLE BLIND BOX'), h('span', {}, SET.edition)),
+      h('footer.card__foot', {}, h('span.card__logo', {}, '✿ CAMILLE CARDS'), h('span', {}, SET.edition)),
     ),
     h('div.card__holo'),
     h('div.card__sparkle'),

@@ -202,7 +202,7 @@ export async function renderCardCanvas(card, { shiny = false } = {}) {
   // footer
   ctx.fillStyle = t.sub;
   ctx.font = '700 18px "Silkscreen", monospace';
-  ctx.fillText('✿ CAMILLE BLIND BOX', 48, H - 40);
+  ctx.fillText('✿ CAMILLE CARDS', 48, H - 40);
   ctx.textAlign = 'right';
   ctx.fillText(SET.edition, W - 48, H - 40);
   ctx.textAlign = 'left';

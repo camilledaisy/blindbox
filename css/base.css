@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CAMILLE BLIND BOX — base: tokens, layout, nav, buttons, home, toasts, modals
+   CAMILLE CARDS — base: tokens, layout, nav, buttons, home, toasts, modals
    ========================================================================== */
 :root {
   --ink: #3a2418;
@@ -20,7 +20,6 @@
   --f-pixel: 'Silkscreen', ui-monospace, 'Courier New', monospace;
   --f-body: 'M PLUS Rounded 1c', ui-rounded, system-ui, sans-serif;
 
-  --bw: min(200px, 44vw, 24svh + 40px); /* blind box width */
   --shadow: 4px 4px 0 var(--ink);
   --shadow-sm: 2px 2px 0 var(--ink);
   --r: 6px;
@@ -108,7 +107,7 @@ img { display: block; max-width: 100%; }
   transform: rotate(-6deg);
   -webkit-text-stroke: 1px var(--ink);
 }
-.logo__text { font: 14px/0.95 var(--f-bubble); letter-spacing: 0.02em; }
+.logo__text { font: 20px/1 var(--f-bubble); letter-spacing: 0.03em; }
 .logo.is-bonked .logo__mark { animation: bonk 0.35s; }
 @keyframes bonk {
   30% { transform: rotate(12deg) scale(1.2); }
@@ -530,7 +529,9 @@ html.is-glitch-screen body { animation: screen-glitch 0.18s steps(2) infinite; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 560px) {
-  .logo__text { display: none; }
+  .logo__text { font-size: 15px; }
+  .logo__mark { width: 28px; height: 28px; font-size: 18px; }
+  .topbar { gap: 6px; }
   .tab { padding: 8px 6px; font-size: 11px; }
   .tab__cursor { display: none; }
   .stk--burst { width: 74px; height: 74px; font-size: 17px; left: -2%; top: 8%; }
@@ -566,3 +567,4 @@ html.is-glitch-screen body { animation: screen-glitch 0.18s steps(2) infinite; }
 .savecard__hint { margin: 0; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
 .savecard__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 body.stage-open .toasts { bottom: auto; top: calc(56px + env(safe-area-inset-top)); }
+@media (max-width: 400px) { .tab__long { display: none; } }

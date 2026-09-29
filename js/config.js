@@ -1,12 +1,12 @@
 // ============================================================================
-//  CAMILLE BLIND BOX — CONFIG
+//  CAMILLE CARDS — CONFIG
 //  Everything you're likely to want to tweak lives in this file.
 //  (Cards themselves live in js/data/cards.js.)
 // ============================================================================
 
 export const SET = {
-  name: 'Camille Blind Box',
-  code: 'CBB',
+  name: 'Camille Cards',
+  code: 'CC',
   edition: "BDAY '26",
   series: 'SERIES 01',
 };
@@ -83,7 +83,7 @@ export const SECRET_LOGO = {
   title: 'SECRET UNLOCKED',
   lines: [
     'Congratulations. You have clicked the logo an unreasonable number of times.',
-    'Official notice from the Camille Blind Box Company: Camille is the main character today. Please act accordingly.',
+    'Official notice from the Camverse: Camille is the main character today. Please act accordingly.',
     'As a reward, your next pack has a ✦ LUCKY CHARM ✦ (3× the odds of an Ultra or Secret Rare).',
   ],
 };
@@ -100,4 +100,5 @@ export const SOUND_FILES = {
   // reveal: 'sounds/reveal.mp3',
 };
 
+// Kept as-is so collections saved before the rename survive.
 export const STORAGE_KEY = 'camille-blind-box/v1';
