@@ -85,7 +85,6 @@ export function openCardDetail(card, { shiny: startShiny } = {}) {
               sfx.play('click');
               try {
                 await saveCardImage(card, { shiny });
-                toast('Card saved!', { icon: '⤓' });
               } catch {
                 toast('Couldn’t save the image here — try a screenshot!', { icon: '⚠' });
               }

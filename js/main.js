@@ -128,11 +128,19 @@ function renderDex() {
           'button.linkbtn',
           {
             type: 'button',
-            onClick: () => {
-              if (confirm('Reset your whole collection? This cannot be undone.')) {
+            onClick: (e) => {
+              const btn = e.currentTarget;
+              if (btn.dataset.armed) {
                 store.reset();
                 toast('Collection reset. A fresh start!', { icon: '↺' });
+                return;
               }
+              btn.dataset.armed = '1';
+              btn.textContent = 'tap again to erase everything';
+              setTimeout(() => {
+                delete btn.dataset.armed;
+                btn.textContent = 'reset collection';
+              }, 3000);
             },
           },
           'reset collection',

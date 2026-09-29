@@ -5,6 +5,8 @@ import { SET } from '../config.js';
 import { CARDS } from '../data/cards.js';
 import { rarityById } from './gacha.js';
 import { loadCardImage } from './placeholder.js';
+import { h } from './dom.js';
+import { openModal } from './ui.js';
 
 const W = 750;
 const H = 1050;
@@ -212,6 +214,8 @@ export async function renderCardCanvas(card, { shiny = false } = {}) {
   return cv;
 }
 
+/** Render the card, then offer it: native share sheet on phones where allowed,
+ *  otherwise a popup with the image (long-press / right-click) and a download button. */
 export async function saveCardImage(card, opts = {}) {
   const canvas = await renderCardCanvas(card, opts);
   const blob = await new Promise((resolve, reject) =>
@@ -228,14 +232,24 @@ export async function saveCardImage(card, opts = {}) {
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;
+      // share refused → fall through to the popup
     }
   }
+
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.append(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  openModal(
+    h(
+      'div.savecard',
+      {},
+      h('img.savecard__img', { src: url, alt: `${card.name} card image` }),
+      h('p.savecard__hint', {}, isTouch ? 'Long-press the card to save it to your photos.' : 'Right-click the card and choose “Save image”, or use the button.'),
+      h(
+        'div.savecard__btns',
+        {},
+        h('a.btn.btn--go', { href: url, download: filename }, '⤓ DOWNLOAD PNG'),
+        h('button.btn.btn--ghost', { type: 'button', 'data-close': '' }, 'CLOSE'),
+      ),
+    ),
+    { className: 'modal--save', label: 'Save card image', onClose: () => setTimeout(() => URL.revokeObjectURL(url), 1000) },
+  );
 }

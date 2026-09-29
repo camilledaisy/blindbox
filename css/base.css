@@ -545,3 +545,22 @@ html.is-glitch-screen body { animation: screen-glitch 0.18s steps(2) infinite; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
   .marquee__track { animation: none; }
 }
+
+/* save-card popup */
+.savecard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: min(360px, 100%);
+  padding: 16px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 6px 6px 0 var(--ink);
+  text-align: center;
+}
+.savecard__img { width: 100%; max-height: 62svh; object-fit: contain; border-radius: 12px; -webkit-touch-callout: default; user-select: auto; }
+.savecard__hint { margin: 0; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.savecard__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+body.stage-open .toasts { bottom: auto; top: calc(56px + env(safe-area-inset-top)); }

@@ -396,7 +396,6 @@ export function createReveal({ onViewCollection, onClose, getHomeBoxRect }) {
     sfx.play('click');
     try {
       await saveCardImage(card, { shiny });
-      toast('Card saved! Go flex it in the group chat.', { icon: '⤓' });
     } catch (err) {
       console.warn(err);
       toast('Couldn’t save the image here — try a screenshot!', { icon: '⚠' });
