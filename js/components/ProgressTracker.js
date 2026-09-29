@@ -1,7 +1,7 @@
 import { h } from '../lib/dom.js';
 
 /** COLLECTION  7 / 10 discovered  + segmented HP-style bar. */
-export function ProgressTracker({ discovered, total, shinies = 0, pulls = 0 }) {
+export function ProgressTracker({ discovered, total, shinies = 0, packs = 0 }) {
   const pct = total ? Math.round((discovered / total) * 100) : 0;
   const segmented = total <= 30;
   return h(
@@ -25,7 +25,7 @@ export function ProgressTracker({ discovered, total, shinies = 0, pulls = 0 }) {
       {},
       h('span', {}, `${pct}% COMPLETE`),
       h('span', {}, `✦ SHINIES ${shinies}`),
-      h('span', {}, `📦 BOXES OPENED ${pulls}`),
+      h('span', {}, `✂ PACKS OPENED ${packs}`),
     ),
     discovered === total && total > 0 && h('div.progress__done', {}, '★ SET COMPLETE ★ you are the ultimate Camille collector'),
   );

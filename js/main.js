@@ -1,13 +1,14 @@
 // App bootstrap: views, routing, nav, wiring components together.
 import { h, $, $$, pick, pixelStar } from './lib/dom.js';
-import { MESSAGES, ODDS, RARITIES } from './config.js';
+import { MESSAGES, ODDS, RARITIES, PACK } from './config.js';
 import { CARDS } from './data/cards.js';
 import { store } from './lib/store.js';
 import { sfx } from './lib/sfx.js';
-import { rarityOdds, fmtPct, fmtOneIn } from './lib/gacha.js';
+import { slotOdds, fmtPct, fmtOneIn } from './lib/gacha.js';
+import { attachTilt } from './lib/tilt.js';
 import { toast } from './lib/ui.js';
 import { initEasterEggs, logoSecret } from './lib/easterEggs.js';
-import { BlindBox } from './components/BlindBox.js';
+import { CardPack } from './components/CardPack.js';
 import { createReveal } from './components/CardReveal.js';
 import { CollectionGrid } from './components/CollectionGrid.js';
 import { ProgressTracker } from './components/ProgressTracker.js';
@@ -15,12 +16,13 @@ import { RarityBadge } from './components/RarityBadge.js';
 import { openCardDetail } from './components/CardDetail.js';
 
 // ------------------------------------------------------------------ home
-const homeBox = BlindBox();
-$('#box-slot').append(homeBox.el);
+const homePack = CardPack();
+$('#box-slot').append(homePack.el);
+attachTilt(homePack.el, { max: 22 });
 
 let pokeBubbleTimer = 0;
-homeBox.el.addEventListener('click', () => {
-  homeBox.poke();
+homePack.el.addEventListener('click', () => {
+  homePack.poke();
   sfx.play('poke');
   const bubble = $('#box-bubble');
   bubble.textContent = pick(MESSAGES.boxPokes);
@@ -39,19 +41,24 @@ $('#stage-root').append(reveal.el);
 
 $('#open-btn').addEventListener('click', () => {
   if (reveal.isBusy()) return;
-  const rect = homeBox.el.getBoundingClientRect();
+  const rect = homePack.el.getBoundingClientRect();
   document.body.classList.add('is-opening');
   reveal.open(rect);
 });
 
 // Drop-rate table (generated from config so it's always accurate).
 function renderRates() {
-  const rows = rarityOdds().map(({ rarity, p, count }) =>
-    h('tr', {}, h('td', {}, RarityBadge(rarity.id, { size: 'sm' })), h('td', {}, fmtPct(p)), h('td', {}, `${count} card${count === 1 ? '' : 's'}`)),
+  const rows = slotOdds().map(({ rarity, filler, hit }) =>
+    h('tr', {}, h('td', {}, RarityBadge(rarity.id, { size: 'sm' })), h('td', {}, fmtPct(filler)), h('td', {}, fmtPct(hit))),
   );
   $('#rates-body').replaceChildren(
-    h('table.rates__table', {}, h('tbody', {}, rows)),
-    h('p.rates__fine', {}, `✦ Any card can be Shiny: ${fmtOneIn(ODDS.shiny)}.  ✦ Rumour has it something else is in there too…`),
+    h(
+      'table.rates__table',
+      {},
+      h('thead', {}, h('tr', {}, h('th', {}, 'RARITY'), h('th', {}, `CARDS 1–${PACK.size - 1}`), h('th', {}, 'RARE SLOT'))),
+      h('tbody', {}, rows),
+    ),
+    h('p.rates__fine', {}, `✦ Any card can be Shiny: ${fmtOneIn(ODDS.shiny)}.  ✦ Rumour has it something else hides in the rare slot...`),
   );
 }
 renderRates();
@@ -110,7 +117,7 @@ function renderDex() {
         h('h1.dex__title', {}, 'THE CAMILLEDEX'),
         h('p.dex__sub', {}, 'Gotta collect every Camille.'),
       ),
-      ProgressTracker({ discovered, total: CARDS.length, shinies, pulls: s.pulls }),
+      ProgressTracker({ discovered, total: CARDS.length, shinies, packs: s.packs || 0 }),
       filterBar,
       CollectionGrid({ filter: dexFilter, onOpen: (card) => openCardDetail(card) }),
       h(
@@ -123,7 +130,7 @@ function renderDex() {
       h(
         'div.dex__foot',
         {},
-        s.pulls === 0 && h('a.btn.btn--go', { href: '#/' }, 'OPEN YOUR FIRST BOX →'),
+        !s.pulls && h('a.btn.btn--go', { href: '#/' }, 'OPEN YOUR FIRST PACK →'),
         h(
           'button.linkbtn',
           {

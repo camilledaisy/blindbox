@@ -1,5 +1,5 @@
-// Pull logic + probability math. Pure functions over config + card data.
-import { RARITIES, HIDDEN_RARITIES, ODDS } from '../config.js';
+// Pack logic + probability math. Pure functions over config + card data.
+import { RARITIES, HIDDEN_RARITIES, ODDS, PACK } from '../config.js';
 import { CARDS, SPECIAL_CARDS } from '../data/cards.js';
 
 export const ALL_RARITIES = [...RARITIES, ...HIDDEN_RARITIES];
@@ -10,18 +10,18 @@ export const cardById = (id) => ALL_CARDS.find((c) => c.id === id);
 export const isSpecial = (card) => SPECIAL_CARDS.includes(card);
 
 const cardWeight = (c) => c.weight ?? 1;
+const sum = (arr, f) => arr.reduce((s, x) => s + f(x), 0);
 
-/** Rarities that actually have cards, with their (optionally boosted) weight. */
-function rollableRarities(boost = false) {
-  return RARITIES.filter((r) => CARDS.some((c) => c.rarity === r.id)).map((r) => ({
+/** Rarities a slot can roll (weight > 0 and at least one card), with optional lucky-charm boost. */
+function slotTable(weights, boost = false) {
+  return RARITIES.filter((r) => (weights[r.id] ?? 0) > 0 && CARDS.some((c) => c.rarity === r.id)).map((r) => ({
     rarity: r,
-    weight: r.weight * (boost && r.tier >= 2 ? ODDS.luckyCharmBoost : 1),
+    weight: weights[r.id] * (boost && r.tier >= 3 ? ODDS.luckyCharmBoost : 1),
   }));
 }
 
 function pickWeighted(items, getWeight) {
-  const total = items.reduce((s, it) => s + getWeight(it), 0);
-  let n = Math.random() * total;
+  let n = Math.random() * sum(items, getWeight);
   for (const it of items) {
     n -= getWeight(it);
     if (n <= 0) return it;
@@ -29,50 +29,69 @@ function pickWeighted(items, getWeight) {
   return items[items.length - 1];
 }
 
-/**
- * Open one blind box.
- * @returns {{ card, shiny: boolean }}
- */
-export function roll({ boost = false } = {}) {
-  if (SPECIAL_CARDS.length && Math.random() < ODDS.error) {
-    return { card: pickWeighted(SPECIAL_CARDS, cardWeight), shiny: false };
-  }
-  const { rarity } = pickWeighted(rollableRarities(boost), (x) => x.weight);
-  const pool = CARDS.filter((c) => c.rarity === rarity.id);
-  const card = pickWeighted(pool, cardWeight);
+function rollSlot(weights, boost) {
+  const { rarity } = pickWeighted(slotTable(weights, boost), (x) => x.weight);
+  const card = pickWeighted(CARDS.filter((c) => c.rarity === rarity.id), cardWeight);
   return { card, shiny: Math.random() < ODDS.shiny };
 }
 
-/** Probability (0..1) of pulling this card (any variant), or its shiny variant. */
-export function chanceOf(card, { shiny = false } = {}) {
-  if (isSpecial(card)) {
-    const total = SPECIAL_CARDS.reduce((s, c) => s + cardWeight(c), 0);
-    return ODDS.error * (cardWeight(card) / total);
-  }
-  const rarities = rollableRarities();
-  const total = rarities.reduce((s, x) => s + x.weight, 0);
-  const entry = rarities.find((x) => x.rarity.id === card.rarity);
-  if (!entry) return 0;
-  const pool = CARDS.filter((c) => c.rarity === card.rarity);
-  const poolTotal = pool.reduce((s, c) => s + cardWeight(c), 0);
-  const p = (1 - (SPECIAL_CARDS.length ? ODDS.error : 0)) * (entry.weight / total) * (cardWeight(card) / poolTotal);
-  return shiny ? p * ODDS.shiny : p;
+/**
+ * Open one booster pack.
+ * @param boost    lucky charm active
+ * @param forceHit card to put in the rare slot (preview mode)
+ * @returns {{ card, shiny: boolean, hit: boolean }[]}  last entry is the rare slot
+ */
+export function rollPack({ boost = false, forceHit = null } = {}) {
+  const pack = [];
+  for (let i = 0; i < PACK.size - 1; i++) pack.push({ ...rollSlot(PACK.fillerWeights), hit: false });
+  let last;
+  if (forceHit) last = { card: forceHit, shiny: false };
+  else if (SPECIAL_CARDS.length && Math.random() < ODDS.error) last = { card: pickWeighted(SPECIAL_CARDS, cardWeight), shiny: false };
+  else last = rollSlot(PACK.hitWeights, boost);
+  pack.push({ ...last, hit: true });
+  return pack;
 }
 
-/** Normalised chance of each rarity, for the drop-rate table. */
-export function rarityOdds() {
-  const rarities = rollableRarities();
-  const total = rarities.reduce((s, x) => s + x.weight, 0);
-  return rarities.map(({ rarity, weight }) => ({
+function slotChance(card, weights, isHit) {
+  if (isSpecial(card)) return isHit ? ODDS.error * (cardWeight(card) / sum(SPECIAL_CARDS, cardWeight)) : 0;
+  const table = slotTable(weights);
+  const entry = table.find((x) => x.rarity.id === card.rarity);
+  if (!entry) return 0;
+  const pool = CARDS.filter((c) => c.rarity === card.rarity);
+  const p = (entry.weight / sum(table, (x) => x.weight)) * (cardWeight(card) / sum(pool, cardWeight));
+  return isHit && SPECIAL_CARDS.length ? p * (1 - ODDS.error) : p;
+}
+
+/** Chance (0..1) of this card in one of the first slots / in the rare slot. */
+export const fillerChance = (card) => slotChance(card, PACK.fillerWeights, false);
+export const hitChance = (card) => slotChance(card, PACK.hitWeights, true);
+
+/** Chance (0..1) that a pack contains this card at least once (or its shiny variant). */
+export function packChance(card, { shiny = false } = {}) {
+  const s = shiny && !isSpecial(card) ? ODDS.shiny : 1;
+  const miss = Math.pow(1 - fillerChance(card) * s, PACK.size - 1) * (1 - hitChance(card) * s);
+  return 1 - miss;
+}
+
+/** Normalised chance of each rarity per slot type, for the drop-rate table. */
+export function slotOdds() {
+  const f = slotTable(PACK.fillerWeights);
+  const hTable = slotTable(PACK.hitWeights);
+  const fTotal = sum(f, (x) => x.weight);
+  const hTotal = sum(hTable, (x) => x.weight);
+  const errorShare = SPECIAL_CARDS.length ? 1 - ODDS.error : 1;
+  return RARITIES.filter((r) => CARDS.some((c) => c.rarity === r.id)).map((rarity) => ({
     rarity,
-    p: weight / total,
+    filler: (f.find((x) => x.rarity === rarity)?.weight ?? 0) / fTotal,
+    hit: ((hTable.find((x) => x.rarity === rarity)?.weight ?? 0) / hTotal) * errorShare,
     count: CARDS.filter((c) => c.rarity === rarity.id).length,
   }));
 }
 
 export const oneIn = (p) => (p > 0 ? Math.max(1, Math.round(1 / p)) : Infinity);
-export const fmtOneIn = (p) => `1 in ${oneIn(p).toLocaleString('en-US')}`;
+export const fmtOneIn = (p) => (p > 0 ? `1 in ${oneIn(p).toLocaleString('en-US')}` : 'never');
 export const fmtPct = (p) => {
   const pct = p * 100;
+  if (pct === 0) return '—';
   return `${pct >= 1 ? +pct.toFixed(1) : +pct.toFixed(2)}%`;
 };

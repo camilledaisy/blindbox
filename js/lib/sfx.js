@@ -83,6 +83,15 @@ const SYNTH = {
     tone({ f: 160 + Math.random() * 90, dur: 0.05, type: 'triangle', vol: 0.07 });
   },
   whoosh: () => noise({ dur: 0.45, freq: 300, f2: 3200, q: 0.7, vol: 0.12 }),
+  rip: () => noise({ dur: 0.05 + Math.random() * 0.04, freq: 2500 + Math.random() * 3500, q: 0.9, type: 'highpass', vol: 0.16 }),
+  tearoff: () => {
+    noise({ dur: 0.28, freq: 1800, f2: 6000, q: 0.6, type: 'highpass', vol: 0.2 });
+    tone({ f: 420, f2: 900, dur: 0.18, type: 'triangle', vol: 0.08, t: 0.05 });
+  },
+  deal: () => {
+    noise({ dur: 0.14, freq: 1400, f2: 4200, q: 1.2, vol: 0.13 });
+    tone({ f: 260, f2: 520, dur: 0.08, type: 'triangle', vol: 0.05 });
+  },
   dim: () => tone({ f: 220, f2: 90, dur: 0.7, type: 'sine', vol: 0.18 }),
   heartbeat: () => {
     tone({ f: 70, dur: 0.16, type: 'sine', vol: 0.45 });

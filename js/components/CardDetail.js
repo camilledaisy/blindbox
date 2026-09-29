@@ -1,7 +1,7 @@
 import { h } from '../lib/dom.js';
 import { store } from '../lib/store.js';
 import { sfx } from '../lib/sfx.js';
-import { rarityById, chanceOf, fmtOneIn, fmtPct } from '../lib/gacha.js';
+import { rarityById, packChance, fmtOneIn, fmtPct } from '../lib/gacha.js';
 import { attachTilt } from '../lib/tilt.js';
 import { openModal, toast } from '../lib/ui.js';
 import { saveCardImage } from '../lib/cardImage.js';
@@ -51,7 +51,7 @@ export function openCardDetail(card, { shiny: startShiny } = {}) {
     ),
   );
 
-  const p = chanceOf(card);
+  const p = packChance(card);
   const content = h(
     'div.detail',
     {},
@@ -69,8 +69,8 @@ export function openCardDetail(card, { shiny: startShiny } = {}) {
         'dl.detail__facts',
         {},
         h('dt', {}, 'ERA'), h('dd', {}, card.era),
-        h('dt', {}, 'PULL RATE'), h('dd', {}, `${fmtOneIn(p)} (${fmtPct(p)})`),
-        h('dt', {}, 'SHINY RATE'), h('dd', {}, rarity.id === 'error' ? 'does not compute' : fmtOneIn(chanceOf(card, { shiny: true }))),
+        h('dt', {}, 'PULL RATE'), h('dd', {}, `${fmtOneIn(p)} packs (${fmtPct(p)})`),
+        h('dt', {}, 'SHINY RATE'), h('dd', {}, rarity.id === 'error' ? 'does not compute' : `${fmtOneIn(packChance(card, { shiny: true }))} packs`),
         h('dt', {}, 'OWNED'), h('dd', {}, `×${owned.count}${owned.shiny ? ` (✦ ${owned.shiny} shiny)` : ''}`),
         h('dt', {}, 'FIRST PULLED'), h('dd', {}, fmtDate(owned.first)),
       ),
