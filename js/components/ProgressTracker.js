@@ -27,6 +27,6 @@ export function ProgressTracker({ discovered, total, shinies = 0, packs = 0 }) {
       h('span', {}, `✦ SHINIES ${shinies}`),
       h('span', {}, `✂ PACKS OPENED ${packs}`),
     ),
-    discovered === total && total > 0 && h('div.progress__done', {}, '★ SET COMPLETE ★ you are the ultimate Camille collector'),
+    discovered === total && total > 0 && h('div.progress__done', {}, `★ ${total}/${total} SET COMPLETE ★ Happy 25th, Camille! You are the ultimate collector.`),
   );
 }
