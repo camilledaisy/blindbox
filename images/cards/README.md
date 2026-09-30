@@ -38,6 +38,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 031 Hotelcam           | common  | `041-hotelcam.webp` ✓ |
 | 032 ABG Cam            | ultra   | `042-abg-cam.webp` ✓ |
 | 033 Prom               | common  | `043-prom.webp` ✓ |
+| 034 ABG Cam 2          | rare    | `044-abg-cam-2.webp` ✓ |
+| 035 Real Cry           | rare    | `045-real-cry.webp` ✓ |
+| 036 Smileycam          | ultra   | `046-smileycam.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
