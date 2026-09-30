@@ -52,6 +52,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 045 CNE Cam            | common  | `055-cne-cam.webp` ✓ |
 | 046 18th               | rare    | `056-18th.webp` ✓ |
 | 047 Honey              | ultra   | `057-honey.webp` ✓ |
+| 048 Gamercam           | common  | `058-gamercam.webp` ✓ |
+| 049 Josh               | ultra   | `059-josh.webp` ✓ |
+| 050 Blur               | common  | `060-blur.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
