@@ -66,7 +66,7 @@ export const CARDS = [
     name: 'Karatecam',
     rarity: 'rare',
     image: 'images/cards/014-karatecam.webp',
-    imagePosition: '50% 12%',
+    imagePosition: '50% 16%',
     description: 'White belt. Black-belt confidence. Will karate chop anyone who takes the last slice of cake.',
     era: 'Dojo Days',
     stats: { Kicks: 90, Focus: 96, 'Belt Level': 5, 'Cake Defense': 100 },

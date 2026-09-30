@@ -185,8 +185,12 @@ export async function renderCardCanvas(card, { shiny = false } = {}) {
     const col = i % 2, row = Math.floor(i / 2);
     const sx = 56 + col * 330, sy = y + row * 46;
     ctx.fillStyle = t.sub;
-    ctx.font = '700 18px "Silkscreen", monospace';
+    let fs = 18;
+    ctx.font = `700 ${fs}px "Silkscreen", monospace`;
+    const room = 300 - ctx.measureText(String(v)).width - 14;
+    while (ctx.measureText(k.toUpperCase()).width > room && fs > 11) ctx.font = `700 ${--fs}px "Silkscreen", monospace`;
     ctx.fillText(k.toUpperCase(), sx, sy);
+    ctx.font = '700 18px "Silkscreen", monospace';
     ctx.fillStyle = t.text;
     ctx.textAlign = 'right';
     ctx.fillText(String(v), sx + 300, sy);
