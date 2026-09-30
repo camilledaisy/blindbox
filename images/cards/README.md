@@ -16,9 +16,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 009 Coconut            | common  | `019-coconut.webp` ✓ |
 | 010 Okaay Eyebrows     | rare    | `020-okaay-eyebrows.webp` ✓ |
 | 011 Mwah Mwah          | rare    | `021-mwah-mwah.webp` ✓ |
-| 012 Gang               | common  | `022-gang.webp`  |
-| 013 Glasses            | common  | `023-glasses.webp`  |
-| 014 Just Standing      | common  | `024-just-standing.webp`  |
+| 012 Gang               | common  | `022-gang.webp` ✓ |
+| 013 Glasses            | common  | `023-glasses.webp` ✓ |
+| 014 Just Standing      | common  | `024-just-standing.webp` ✓ |
 | 015 Album Cover        | rare    | `025-album-cover.webp`  |
 | 016 Chicken            | rare    | `026-chicken.webp`  |
 | 017 Uncanny Valley     | common  | `027-uncanny-valley.webp`  |
