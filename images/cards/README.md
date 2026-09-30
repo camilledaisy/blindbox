@@ -10,8 +10,8 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 003 Spidercam          | rare    | `013-spidercam.webp` ✓ |
 | 004 Karatecam          | rare    | `014-karatecam.webp` ✓ |
 | 005 Spongeybob         | common  | `015-spongeybob.webp` ✓ |
-| 006 Tomato             | common  | `016-tomato.webp`  |
-| 007 Twin               | common  | `017-twin.webp`  |
+| 006 Tomato             | common  | `016-tomato.webp` ✓ |
+| 007 Twin               | common  | `017-twin.webp` ✓ |
 | 008 Middle School Cam  | common  | `018-middle-school-cam.webp`  |
 | 009 Coconut            | common  | `019-coconut.webp`  |
 | 010 Okaay Eyebrows     | rare    | `020-okaay-eyebrows.webp`  |
