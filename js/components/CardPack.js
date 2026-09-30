@@ -4,7 +4,7 @@ import { h, rand } from '../lib/dom.js';
 import { SET, PACK } from '../config.js';
 
 // Photo sticker on the front of the pack. Swap the file to change it.
-const COVER = { src: 'images/pack-cover.jpg', position: '50% 45%' };
+const COVER = { src: 'images/pack-cover.jpg', position: '50% 50%' };
 
 const CUT = 15; // % from the top where the pack tears
 const TEETH = 22; // crimp teeth on the sealed edges
