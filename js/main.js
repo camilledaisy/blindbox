@@ -71,7 +71,10 @@ function renderDex() {
   const discovered = CARDS.filter((c) => store.has(c.id)).length;
   const shinies = Object.values(s.cards).reduce((n, e) => n + (e.shiny > 0 ? 1 : 0), 0);
 
-  const filters = [{ id: 'all', label: 'ALL' }, ...RARITIES.map((r) => ({ id: r.id, label: r.label.toUpperCase() }))];
+  const filters = [
+    { id: 'all', label: 'ALL' },
+    ...RARITIES.filter((r) => CARDS.some((c) => c.rarity === r.id)).map((r) => ({ id: r.id, label: r.label.toUpperCase() })),
+  ];
   const filterBar = h(
     'div.dex-filters',
     { role: 'tablist', 'aria-label': 'Filter by rarity' },
