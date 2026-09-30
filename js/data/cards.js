@@ -787,6 +787,18 @@ export const CARDS = [
     stats: { Tininess: 100, 'Chair Size': 100, Confidence: 99, 'Feet Touch Floor': 0 },
     color: '#f5d98a',
     emoji: '🪑',
+  },  {
+    id: '071',
+    no: '061',
+    name: 'Cozycam',
+    rarity: 'common',
+    image: 'images/cards/071-cozycam.webp',
+    imagePosition: '50% 45%',
+    description: 'Wrapped in a scarf like a burrito. Will not be leaving the car. Will not be taking questions.',
+    era: 'Winter Era',
+    stats: { Coziness: 100, 'Scarf Layers': 5, Warmth: 98, 'Leaving The Car': 0 },
+    color: '#c8c8d0',
+    emoji: '🧣',
   },
 ];
 

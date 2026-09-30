@@ -65,6 +65,7 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 058 IKEA Cam           | common  | `068-ikea-cam.webp` ✓ |
 | 059 Shades             | common  | `069-shades.webp` ✓ |
 | 060 Tiny               | common  | `070-tiny.webp` ✓ |
+| 061 Cozycam            | common  | `071-cozycam.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
