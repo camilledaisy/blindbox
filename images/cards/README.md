@@ -16,6 +16,23 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 009 Childhood Throwback   | `009-childhood-throwback.jpg`     |
 | 010 Legendary Camille     | `010-legendary-camille.jpg`       |
 | 011 Derpmille             | `011-derpmille.webp` ✓            |
+| 012 Run Forrest Run       | `012-run-forrest-run.webp` ✓      |
+| 013 Spidercam             | `013-spidercam.webp` ✓            |
+| 014 Karatecam             | `014-karatecam.webp`              |
+| 015 Spongeybob            | `015-spongeybob.webp`            |
+| 016 Tomato                | `016-tomato.webp`                |
+| 017 Twin                  | `017-twin.webp`                  |
+| 018 Middle School Cam     | `018-middle-school-cam.webp`     |
+| 019 Coconut               | `019-coconut.webp`               |
+| 020 Okaay Eyebrows        | `020-okaay-eyebrows.webp`        |
+| 021 Mwah Mwah             | `021-mwah-mwah.webp`             |
+| 022 Gang                  | `022-gang.webp`                  |
+| 023 Glasses               | `023-glasses.webp`               |
+| 024 Just Standing         | `024-just-standing.webp`         |
+| 025 Album Cover           | `025-album-cover.webp`           |
+| 026 Chicken               | `026-chicken.webp`               |
+| 027 Uncanny Valley        | `027-uncanny-valley.webp`        |
+| 028 Braces                | `028-braces.webp`                |
 | ??? ERROR CAMILLE         | `err-error-camille.jpg`           |
 
 Tips
