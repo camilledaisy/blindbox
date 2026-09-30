@@ -110,7 +110,7 @@ export const SOUND_FILES = {
  * Leave it empty to turn tracking off.
  */
 export const TRACKING = {
-  endpoint: '',
+  endpoint: 'https://script.google.com/macros/s/AKfycbxdSUlx5UCggh96N-nbyilVb5LmyZELxFafCku1QKgFtAGuYmFcbO6hq7xBJCQs-rjqqw/exec',
 };
 
 // Kept as-is so collections saved before the rename survive.
