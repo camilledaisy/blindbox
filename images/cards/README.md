@@ -55,6 +55,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 048 Gamercam           | common  | `058-gamercam.webp` ✓ |
 | 049 Josh               | ultra   | `059-josh.webp` ✓ |
 | 050 Blur               | common  | `060-blur.webp` ✓ |
+| 051 Ouch               | rare    | `061-ouch.webp` ✓ |
+| 052 Sari Sari          | common  | `062-sari-sari.webp` ✓ |
+| 053 Birthdaycam        | ultra   | `063-birthdaycam.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
