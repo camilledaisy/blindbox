@@ -629,7 +629,7 @@ export const CARDS = [
     rarity: 'common',
     image: 'images/cards/058-gamercam.webp',
     imagePosition: '50% 40%',
-    description: 'Headset on, mic muted, pout activated. Queue time: forever.',
+    description: 'Not your pocket sage.',
     era: 'Gamer Era',
     stats: { 'Headset Game': 100, 'Rage Quits': 40, Pout: 96, 'Touch Grass': 3 },
     color: '#d8c8f5',
