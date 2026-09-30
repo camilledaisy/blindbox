@@ -33,10 +33,23 @@ at any time.
 
 8. Commit that change. From then on, every pack is recorded.
 
+## Password for the JSON link
+
+The site's code contains your Web app URL, so the JSON view is locked with a
+password that only lives in Apps Script:
+
+1. In Apps Script, change the top line `const VIEW_PASSWORD = 'CHANGE-ME';`
+   to your own password, e.g. `'daisy-cake-2026'`. Save.
+2. **Deploy → Manage deployments → ✏️ Edit → Version: New version → Deploy.**
+   The URL stays the same.
+3. Don't put your real password into the GitHub copy of `Code.gs`.
+
+Recording friends' pulls doesn't need the password; only viewing does.
+
 ## Seeing the results
 
 - **Spreadsheet:** the "Players" tab updates live, one row per friend.
-- **JSON:** open your Web app URL in a browser. It returns:
+- **JSON:** open `<your Web app URL>?key=YOUR-PASSWORD` in a browser. It returns:
 
 ```json
 {

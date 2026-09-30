@@ -5,6 +5,11 @@
  * player in the "Players" sheet. Open the web-app URL in a browser to get
  * everything as JSON. Setup steps: tracking/README.md
  */
+// Password for viewing results: open  <your /exec URL>?key=YOUR-PASSWORD
+// Change it here in Apps Script only (never commit your real password to GitHub).
+// While it still says CHANGE-ME, nobody can view the results.
+const VIEW_PASSWORD = 'CHANGE-ME';
+
 const SHEET_NAME = 'Players';
 const HEADERS = ['Player ID', 'Name', 'Packs opened', 'Unique cards', 'Total cards', 'Duplicates', 'Cards (count)', 'Last update', 'JSON'];
 
@@ -75,11 +80,15 @@ function doPost(e) {
   }
 }
 
-/** Open the web-app URL to download every player as JSON. */
-function doGet() {
+const json_ = (obj) => ContentService.createTextOutput(JSON.stringify(obj, null, 2)).setMimeType(ContentService.MimeType.JSON);
+
+/** Open <web-app URL>?key=YOUR-PASSWORD to download every player as JSON. */
+function doGet(e) {
+  const key = (e && e.parameter && e.parameter.key) || '';
+  if (VIEW_PASSWORD === 'CHANGE-ME') return json_({ error: 'Set VIEW_PASSWORD at the top of the script first.' });
+  if (key !== VIEW_PASSWORD) return json_({ error: 'Wrong or missing password. Add ?key=YOUR-PASSWORD to the end of the link.' });
   const sh = sheet_();
   const rows = sh.getLastRow() > 1 ? sh.getRange(2, 9, sh.getLastRow() - 1, 1).getValues() : [];
   const players = rows.map((r) => JSON.parse(r[0])).sort((a, b) => b.packsOpened - a.packsOpened);
-  const out = { exportedAt: new Date().toISOString(), players };
-  return ContentService.createTextOutput(JSON.stringify(out, null, 2)).setMimeType(ContentService.MimeType.JSON);
+  return json_({ exportedAt: new Date().toISOString(), players });
 }
