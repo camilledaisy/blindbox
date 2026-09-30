@@ -23,6 +23,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 016 Chicken            | rare    | `026-chicken.webp` ✓ |
 | 017 Uncanny Valley     | common  | `027-uncanny-valley.webp` ✓ |
 | 018 Braces             | common  | `028-braces.webp` ✓ |
+| 019 Cheese             | rare    | `029-cheese.webp` ✓ |
+| 020 Looking Down On You | common  | `030-looking-down-on-you.webp` ✓ |
+| 021 Weebcam            | common  | `031-weebcam.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
