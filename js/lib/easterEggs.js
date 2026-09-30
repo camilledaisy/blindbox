@@ -65,6 +65,7 @@ function typedWords() {
     cake: { emoji: ['🎂', '🍰', '🧁'], msg: 'someone said cake??' },
     camille: { emoji: ['💖', '✨', '🎀', '⭐'], msg: 'you summoned her.' },
     birthday: { emoji: ['🎉', '🎈', '🎁', '🎂'], msg: 'HAPPY BIRTHDAY CAMILLE!!' },
+    '25': { emoji: ['🎂', '🎉', '✨', '🎈', '2️⃣', '5️⃣'], msg: 'Camille is 25!! 🎂' },
   };
   let buf = '';
   document.addEventListener('keydown', (e) => {

@@ -7,7 +7,7 @@
 export const SET = {
   name: 'Camille Cards',
   code: 'CC',
-  edition: "BDAY '26",
+  edition: "25TH BDAY",
   series: 'SERIES 01',
 };
 
@@ -62,7 +62,7 @@ export const MESSAGES = {
     1: 'First pack! Welcome to the Camille economy.',
     5: '5 packs opened. Camille is flattered.',
     10: '10 packs. This is a normal amount of Camille.',
-    25: '25 packs?? Please drink some water.',
+    25: '25 packs for 25 years. Happy birthday, Camille!',
     50: '50 packs. You are legally Camille’s biggest fan.',
   },
   // Speech bubbles when you poke the pack on the home screen.
@@ -71,6 +71,7 @@ export const MESSAGES = {
     'rip me open!!',
     'shake me gently...',
     'it’s camille’s birthday!',
+    'camille is 25!!',
     'i might be a rare one ✦',
     'there are 5 camilles in here',
     'ok that tickles',

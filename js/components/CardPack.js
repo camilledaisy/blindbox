@@ -32,7 +32,7 @@ function Art() {
     h('div.pack__crimp.pack__crimp--top', {}, `✦ ${SET.name.toUpperCase()} ✦`),
     h('div.pack__brand', {}, h('span', {}, 'BOOSTER PACK'), h('span', {}, SET.series)),
     h('div.pack__title', {}, 'Camille'),
-    h('div.pack__ribbon', {}, 'BIRTHDAY BOOSTER'),
+    h('div.pack__ribbon', {}, '25TH BIRTHDAY BOOSTER'),
     h(
       'div.pack__hero',
       {},
