@@ -48,6 +48,10 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 041 First Night In Canada Cam | ultra   | `051-first-night-in-canada-cam.webp` ✓ |
 | 042 School Cam         | common  | `052-school-cam.webp` ✓ |
 | 043 Big Cam            | ultra   | `053-big-cam.webp` ✓ |
+| 044 Swagcam            | common  | `054-swagcam.webp` ✓ |
+| 045 CNE Cam            | common  | `055-cne-cam.webp` ✓ |
+| 046 18th               | rare    | `056-18th.webp` ✓ |
+| 047 Honey              | ultra   | `057-honey.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
