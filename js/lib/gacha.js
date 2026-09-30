@@ -29,9 +29,15 @@ function pickWeighted(items, getWeight) {
   return items[items.length - 1];
 }
 
-function rollSlot(weights, boost) {
-  const { rarity } = pickWeighted(slotTable(weights, boost), (x) => x.weight);
-  const card = pickWeighted(CARDS.filter((c) => c.rarity === rarity.id), cardWeight);
+function rollSlot(weights, boost, used = new Set()) {
+  // Skip rarities whose cards are all already in this pack.
+  const fresh = (r) => CARDS.some((c) => c.rarity === r.id && !used.has(c.id));
+  const table = slotTable(weights, boost);
+  const available = table.filter((x) => fresh(x.rarity));
+  const { rarity } = pickWeighted(available.length ? available : table, (x) => x.weight);
+  const pool = CARDS.filter((c) => c.rarity === rarity.id);
+  const unused = pool.filter((c) => !used.has(c.id));
+  const card = pickWeighted(unused.length ? unused : pool, cardWeight);
   return { card, shiny: Math.random() < ODDS.shiny };
 }
 
@@ -43,11 +49,17 @@ function rollSlot(weights, boost) {
  */
 export function rollPack({ boost = false, forceHit = null } = {}) {
   const pack = [];
-  for (let i = 0; i < PACK.size - 1; i++) pack.push({ ...rollSlot(PACK.fillerWeights), hit: false });
+  const used = new Set();
+  const track = (pull) => {
+    if (PACK.noDuplicates) used.add(pull.card.id);
+    return pull;
+  };
+  if (forceHit) used.add(forceHit.id);
+  for (let i = 0; i < PACK.size - 1; i++) pack.push(track({ ...rollSlot(PACK.fillerWeights, false, used), hit: false }));
   let last;
   if (forceHit) last = { card: forceHit, shiny: false };
   else if (SPECIAL_CARDS.length && Math.random() < ODDS.error) last = { card: pickWeighted(SPECIAL_CARDS, cardWeight), shiny: false };
-  else last = rollSlot(PACK.hitWeights, boost);
+  else last = rollSlot(PACK.hitWeights, boost, used);
   pack.push({ ...last, hit: true });
   return pack;
 }

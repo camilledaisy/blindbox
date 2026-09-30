@@ -370,7 +370,7 @@ export function createReveal({ onViewCollection, onClose }) {
     const rarity = rarityById(pull.card.rarity);
     const tier = rarity.tier;
     const fx = FX[tier];
-    setHead('THE RARE CARD');
+    setHead('THE LAST CARD');
     info.replaceChildren(h('p.stage__hint', {}, 'Something special is in here...'));
     el.style.setProperty('--dim', fx.dim);
     phase('hit');
@@ -542,7 +542,7 @@ export function createReveal({ onViewCollection, onClose }) {
       h(
         'div.stage__btns',
         {},
-        h('button.btn.btn--ghost', { type: 'button', onClick: () => doSave(hit.card, hit.shiny) }, '⤓ SAVE RARE CARD'),
+        h('button.btn.btn--ghost', { type: 'button', onClick: () => doSave(hit.card, hit.shiny) }, '⤓ SAVE ULTRA RARE'),
         h('button.btn.btn--ghost', { type: 'button', onClick: () => { close(); onViewCollection?.(); } }, '▦ VIEW COLLECTION'),
         h('button.btn.btn--go', { type: 'button', onClick: openAnother }, '↻ OPEN ANOTHER PACK'),
       ),

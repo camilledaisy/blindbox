@@ -58,7 +58,7 @@ function renderRates() {
       h('thead', {}, h('tr', {}, h('th', {}, 'RARITY'), h('th', {}, `CARDS 1–${PACK.size - 1}`), h('th', {}, 'RARE SLOT'))),
       h('tbody', {}, rows),
     ),
-    h('p.rates__fine', {}, `✦ Any card can be Shiny: ${fmtOneIn(ODDS.shiny)}.  ✦ Rumour has it something else hides in the rare slot...`),
+    h('p.rates__fine', {}, `✦ Any card can be Shiny: ${fmtOneIn(ODDS.shiny)}.  ✦ Rumour has it something else hides in the last slot...`),
   );
 }
 renderRates();

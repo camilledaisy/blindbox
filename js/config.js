@@ -40,8 +40,10 @@ export const HIDDEN_RARITIES = [
  */
 export const PACK = {
   size: 5,
-  fillerWeights: { common: 62, uncommon: 32, rare: 6 },
-  hitWeights: { rare: 70, ultra: 24, secret: 6 },
+  fillerWeights: { common: 70, rare: 30 },
+  hitWeights: { ultra: 100 },
+  /** No card appears twice in the same pack (falls back gracefully if a pool runs out). */
+  noDuplicates: true,
 };
 
 export const ODDS = {
