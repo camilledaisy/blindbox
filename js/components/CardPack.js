@@ -1,8 +1,14 @@
 // Foil booster pack. Two stacked copies of the artwork (top strip + body) are
 // clipped along a jagged cut line so the top can be torn off along a swipe.
-import { h, rand } from '../lib/dom.js';
+import { h, rand, pick } from '../lib/dom.js';
 import { SET, PACK } from '../config.js';
-import { SILHOUETTE_SVG } from './Card.js';
+import { cardById } from '../lib/gacha.js';
+import { srcFor } from '../lib/placeholder.js';
+
+// Photos that can appear as the sticker on the front of the pack (one is picked per visit).
+// Face-forward shots that read well small; no Ultra/Secret Rares so nothing is spoiled.
+const COVER_IDS = ['029', '039', '058', '054', '011', '069', '071', '037', '035', '047'];
+const cover = cardById(pick(COVER_IDS.filter((id) => cardById(id))));
 
 const CUT = 15; // % from the top where the pack tears
 const TEETH = 22; // crimp teeth on the sealed edges
@@ -36,8 +42,12 @@ function Art() {
       {},
       h('div.pack__burst'),
       h('div.pack__fan', {}, h('i'), h('i'), h('i')),
-      h('div.pack__fig', { html: SILHOUETTE_SVG }),
-      h('span.pack__q', {}, '?'),
+      cover &&
+        h(
+          'div.pack__sticker',
+          {},
+          h('img', { src: srcFor(cover), alt: '', draggable: 'false', style: { objectPosition: cover.imagePosition || '50% 40%' } }),
+        ),
     ),
     h('div.pack__count', {}, h('b', {}, PACK.size), h('small', {}, 'CARDS')),
     h('div.pack__jp', {}, 'カミーユ', h('small', {}, 'ブースターパック')),
