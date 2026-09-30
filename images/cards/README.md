@@ -32,6 +32,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 025 Snapcam            | common  | `035-snapcam.webp` ✓ |
 | 026 Fakecry            | common  | `036-fakecry.webp` ✓ |
 | 027 Tata               | common  | `037-tata.webp` ✓ |
+| 028 Peepeepoopoo       | common  | `038-peepeepoopoo.webp` ✓ |
+| 029 Tortle             | common  | `039-tortle.webp` ✓ |
+| 030 Devil              | common  | `040-devil.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
