@@ -19,9 +19,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 012 Gang               | common  | `022-gang.webp` ✓ |
 | 013 Glasses            | common  | `023-glasses.webp` ✓ |
 | 014 Just Standing      | common  | `024-just-standing.webp` ✓ |
-| 015 Album Cover        | rare    | `025-album-cover.webp`  |
-| 016 Chicken            | rare    | `026-chicken.webp`  |
-| 017 Uncanny Valley     | common  | `027-uncanny-valley.webp`  |
+| 015 Album Cover        | rare    | `025-album-cover.webp` ✓ |
+| 016 Chicken            | rare    | `026-chicken.webp` ✓ |
+| 017 Uncanny Valley     | common  | `027-uncanny-valley.webp` ✓ |
 | 018 Braces             | common  | `028-braces.webp`  |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
