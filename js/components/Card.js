@@ -83,7 +83,7 @@ export function Card(card, { shiny = false, withBack = false, faceDown = false }
         'header.card__head',
         {},
         h('span.card__no', {}, `No.${card.no}`),
-        h('h3.card__name', { class: card.name.length > 16 ? 'is-long' : '', 'data-text': card.name }, card.name),
+        h('h3.card__name', { class: card.name.length > 22 ? 'is-xlong' : card.name.length > 16 ? 'is-long' : '', 'data-text': card.name }, card.name),
       ),
       photo,
       h('div.card__rarity', {}, RarityBadge(card.rarity, { size: 'sm', shiny }), h('span.card__set', {}, isError ? '???/???' : `${card.no}/${total}`)),

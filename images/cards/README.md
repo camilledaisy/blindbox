@@ -45,6 +45,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 038 Callum             | rare    | `048-callum.webp` ✓ |
 | 039 Eh                 | common  | `049-eh.webp` ✓ |
 | 040 Body Tea           | rare    | `050-body-tea.webp` ✓ |
+| 041 First Night In Canada Cam | ultra   | `051-first-night-in-canada-cam.webp` ✓ |
+| 042 School Cam         | common  | `052-school-cam.webp` ✓ |
+| 043 Big Cam            | ultra   | `053-big-cam.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips

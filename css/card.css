@@ -76,6 +76,7 @@
   text-overflow: ellipsis;
 }
 .card__name.is-long { font-size: 5.6cqw; }
+.card__name.is-xlong { font-size: 4.3cqw; }
 
 .card__photo {
   position: relative;
