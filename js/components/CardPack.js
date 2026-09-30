@@ -41,7 +41,7 @@ function Art() {
     ),
     h('div.pack__count', {}, h('b', {}, PACK.size), h('small', {}, 'CARDS')),
     h('div.pack__jp', {}, 'カミーユ', h('small', {}, 'ブースターパック')),
-    h('div.pack__fine', {}, '1 ULTRA RARE IN EVERY PACK'),
+    h('div.pack__fine', {}, '1 ULTRA RARE OR BETTER IN EVERY PACK'),
     h('div.pack__crimp.pack__crimp--bottom', {}, SET.edition),
     h('div.pack__sheen'),
   );

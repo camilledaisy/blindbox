@@ -542,7 +542,7 @@ export function createReveal({ onViewCollection, onClose }) {
       h(
         'div.stage__btns',
         {},
-        h('button.btn.btn--ghost', { type: 'button', onClick: () => doSave(hit.card, hit.shiny) }, '⤓ SAVE ULTRA RARE'),
+        h('button.btn.btn--ghost', { type: 'button', onClick: () => doSave(hit.card, hit.shiny) }, '⤓ SAVE BEST CARD'),
         h('button.btn.btn--ghost', { type: 'button', onClick: () => { close(); onViewCollection?.(); } }, '▦ VIEW COLLECTION'),
         h('button.btn.btn--go', { type: 'button', onClick: openAnother }, '↻ OPEN ANOTHER PACK'),
       ),
