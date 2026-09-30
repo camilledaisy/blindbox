@@ -583,7 +583,7 @@ body.stage-open .toasts { bottom: auto; top: calc(56px + env(safe-area-inset-top
   box-shadow: 6px 6px 0 var(--ink);
   text-align: center;
 }
-.namebox__icon { font-size: 40px; animation: bob 1.6s ease-in-out infinite; }
+.namebox__icon { width: 110px; height: auto; margin: -6px 0 -8px; mix-blend-mode: multiply; animation: bob 1.6s ease-in-out infinite; }
 .namebox__title { margin: 0; font: 400 28px/1 var(--f-bubble); color: var(--orange); -webkit-text-stroke: 1.5px var(--ink); paint-order: stroke fill; }
 .namebox__text { margin: 0; font-size: 14px; font-weight: 700; }
 .namebox__input {

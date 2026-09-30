@@ -32,7 +32,7 @@ export function askForName() {
         toast(`Welcome, ${name}! Go open a pack ✦`, { icon: '🎁' });
       },
     },
-    h('div.namebox__icon', { 'aria-hidden': 'true' }, '🎂'),
+    h('img.namebox__icon', { src: 'images/cake.jpg', alt: '', 'aria-hidden': 'true', draggable: 'false' }),
     h('h2.namebox__title', {}, 'Who’s pulling?'),
     h('p.namebox__text', {}, 'Enter your name to start collecting Camille Cards.'),
     input,
