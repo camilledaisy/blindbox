@@ -13,9 +13,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 006 Tomato             | common  | `016-tomato.webp` ✓ |
 | 007 Twin               | common  | `017-twin.webp` ✓ |
 | 008 Middle School Cam  | common  | `018-middle-school-cam.webp` ✓ |
-| 009 Coconut            | common  | `019-coconut.webp`  |
+| 009 Coconut            | common  | `019-coconut.webp` ✓ |
 | 010 Okaay Eyebrows     | rare    | `020-okaay-eyebrows.webp` ✓ |
-| 011 Mwah Mwah          | rare    | `021-mwah-mwah.webp`  |
+| 011 Mwah Mwah          | rare    | `021-mwah-mwah.webp` ✓ |
 | 012 Gang               | common  | `022-gang.webp`  |
 | 013 Glasses            | common  | `023-glasses.webp`  |
 | 014 Just Standing      | common  | `024-just-standing.webp`  |
