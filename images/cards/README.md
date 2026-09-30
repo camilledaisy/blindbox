@@ -35,6 +35,9 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 028 Peepeepoopoo       | common  | `038-peepeepoopoo.webp` ✓ |
 | 029 Tortle             | common  | `039-tortle.webp` ✓ |
 | 030 Devil              | common  | `040-devil.webp` ✓ |
+| 031 Hotelcam           | common  | `041-hotelcam.webp` ✓ |
+| 032 ABG Cam            | ultra   | `042-abg-cam.webp` ✓ |
+| 033 Prom               | common  | `043-prom.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
