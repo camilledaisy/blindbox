@@ -17,13 +17,13 @@ export function toast(text, { icon = '✦', ms = 3200 } = {}) {
  * Open a modal. `content` is a Node. Returns { el, close }.
  * Closes on Esc, backdrop click, or any [data-close] element.
  */
-export function openModal(content, { className = '', label = 'Dialog', onClose } = {}) {
+export function openModal(content, { className = '', label = 'Dialog', onClose, dismissible = true } = {}) {
   const prevFocus = document.activeElement;
   const panel = h('div.modal__panel', { role: 'dialog', 'aria-modal': 'true', 'aria-label': label, tabindex: '-1' }, content);
-  const el = h('div.modal', { class: className }, h('div.modal__backdrop', { 'data-close': '' }), panel);
+  const el = h('div.modal', { class: className }, h('div.modal__backdrop', { 'data-close': dismissible ? '' : null }), panel);
 
   const onKey = (e) => {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape' && dismissible) close();
   };
   function close() {
     document.removeEventListener('keydown', onKey);

@@ -8,6 +8,8 @@ import { slotOdds, fmtPct, fmtOneIn } from './lib/gacha.js';
 import { attachTilt } from './lib/tilt.js';
 import { toast } from './lib/ui.js';
 import { initEasterEggs, logoSecret } from './lib/easterEggs.js';
+import { initTracking } from './lib/tracker.js';
+import { askForName } from './components/NamePrompt.js';
 import { CardPack } from './components/CardPack.js';
 import { createReveal } from './components/CardReveal.js';
 import { CollectionGrid } from './components/CollectionGrid.js';
@@ -127,7 +129,7 @@ function renderDex() {
         'section.trade',
         {},
         h('div.trade__title', { html: `${pixelStar()} TRADING POST <span class="trade__soon">COMING SOON</span>` }),
-        h('p.trade__text', {}, 'Soon you’ll be able to trade duplicate Camilles with friends. Claim your collector name now:'),
+        h('p.trade__text', {}, 'Soon you’ll be able to trade duplicate Camilles with friends. Your collector name:'),
         h('label.trade__row', {}, h('span', {}, 'COLLECTOR:'), collectorInput),
       ),
       h(
@@ -204,3 +206,5 @@ initEasterEggs();
 document.querySelectorAll('[data-count]').forEach((el) => (el.textContent = CARDS.length));
 updateNav();
 route();
+initTracking();
+if (!store.get().collector) askForName();

@@ -103,5 +103,15 @@ export const SOUND_FILES = {
   // reveal: 'sounds/reveal.mp3',
 };
 
+/**
+ * PLAYER TRACKING
+ * Paste your Google Apps Script web-app URL here (see tracking/README.md) and
+ * every friend's name, packs and cards are sent to your Google Sheet.
+ * Leave it empty to turn tracking off.
+ */
+export const TRACKING = {
+  endpoint: '',
+};
+
 // Kept as-is so collections saved before the rename survive.
 export const STORAGE_KEY = 'camille-blind-box/v1';

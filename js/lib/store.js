@@ -14,12 +14,17 @@
 import { STORAGE_KEY } from '../config.js';
 
 const LOG_LIMIT = 500;
-const blank = () => ({ v: 1, collector: '', packs: 0, pulls: 0, cards: {}, log: [], flags: {} });
+const newId = () => (crypto.randomUUID?.() ?? Date.now().toString(36) + Math.random().toString(36).slice(2));
+const blank = () => ({ v: 1, playerId: newId(), collector: '', packs: 0, pulls: 0, cards: {}, log: [], flags: {} });
 
 function load() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return { ...blank(), ...JSON.parse(raw) };
+    if (raw) {
+      const saved = { ...blank(), ...JSON.parse(raw) };
+      if (!saved.playerId) saved.playerId = newId();
+      return saved;
+    }
   } catch {
     /* private mode / corrupted — start fresh */
   }
@@ -78,7 +83,7 @@ export const store = {
   },
 
   reset() {
-    state = blank();
+    state = { ...blank(), playerId: state.playerId, collector: state.collector };
     commit();
   },
 

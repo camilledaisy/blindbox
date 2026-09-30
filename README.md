@@ -19,6 +19,13 @@ Then open the address it prints (for example http://localhost:3000).
 
 **GitHub Pages:** go to repo **Settings → Pages**, set the source to **Deploy from a branch**, pick the branch and `/ (root)`, and save. Netlify, Vercel or Cloudflare Pages also work: drag and drop the folder, no build command needed.
 
+## See who pulled what
+
+Friends enter their name the first time they open the site. To collect everyone's
+packs, cards and duplicates in a Google Sheet (plus a JSON link), follow
+[`tracking/README.md`](tracking/README.md) once and paste the URL into
+`js/config.js` → `TRACKING.endpoint`.
+
 ## Customise
 
 | I want to…                              | Edit                                                   |
