@@ -58,6 +58,10 @@ Or change the `image` path for a card in `js/data/cards.js`.
 | 051 Ouch               | rare    | `061-ouch.webp` ✓ |
 | 052 Sari Sari          | common  | `062-sari-sari.webp` ✓ |
 | 053 Birthdaycam        | ultra   | `063-birthdaycam.webp` ✓ |
+| 054 Princess           | rare    | `064-princess.webp` ✓ |
+| 055 Princess 2.0       | ultra   | `065-princess-2.webp` ✓ |
+| 056 Who’s That?        | common  | `066-whos-that.webp` ✓ |
+| 057 Daisy              | common  | `067-daisy.webp` ✓ |
 | ??? ERROR CAMILLE      | error   | `err-error-camille.jpg`  |
 
 Tips
