@@ -118,7 +118,7 @@ function renderDex() {
         {},
         h('div.dex__lights', { 'aria-hidden': 'true' }, h('i.l-big'), h('i.l-r'), h('i.l-y'), h('i.l-g')),
         h('h1.dex__title', {}, 'THE CAMILLEDEX'),
-        h('p.dex__sub', {}, 'Gotta collect every Camille.'),
+        h('p.dex__sub', {}, 'Gotta collect every Cam.'),
       ),
       ProgressTracker({ discovered, total: CARDS.length, shinies, packs: s.packs || 0 }),
       filterBar,
