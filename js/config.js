@@ -44,6 +44,9 @@ export const PACK = {
   hitWeights: { ultra: 92, secret: 8 },
   /** No card appears twice in the same pack (falls back gracefully if a pool runs out). */
   noDuplicates: true,
+  /** Avoid doubles: within the rarity rolled, a player always gets a card they don't own yet.
+   *  Rarity odds don't change, so a double only happens once they own every card of that rarity. */
+  noRepeatsAcrossPacks: true,
 };
 
 export const ODDS = {

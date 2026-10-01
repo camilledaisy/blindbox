@@ -4,7 +4,7 @@
 //   3. the last card is the rare slot: face-down, charges up by rarity, tap to flip
 //   4. summary of the whole pack
 import { h, $, clamp, rand, replayClass, reducedMotion } from '../lib/dom.js';
-import { MESSAGES, ODDS } from '../config.js';
+import { MESSAGES, ODDS, PACK } from '../config.js';
 import { rollPack, rarityById, hitChance, fmtOneIn, cardById } from '../lib/gacha.js';
 import { store } from '../lib/store.js';
 import { sfx } from '../lib/sfx.js';
@@ -613,7 +613,8 @@ export function createReveal({ onViewCollection, onClose }) {
     const params = new URLSearchParams(location.search);
     const forced = params.has('preview') && cardById(params.get('preview'));
     const boost = !forced && !!store.flag('luckyCharm');
-    const pulls = rollPack({ boost, forceHit: forced || null });
+    const owned = PACK.noRepeatsAcrossPacks && !forced ? Object.keys(store.get().cards).filter((id) => store.has(id)) : [];
+    const pulls = rollPack({ boost, forceHit: forced || null, exclude: owned });
     if (forced && params.has('shiny')) pulls[pulls.length - 1].shiny = true;
     if (boost) store.setFlag('luckyCharm', false);
     let results;

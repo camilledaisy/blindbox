@@ -29,15 +29,19 @@ function pickWeighted(items, getWeight) {
   return items[items.length - 1];
 }
 
-function rollSlot(weights, boost, used = new Set()) {
-  // Skip rarities whose cards are all already in this pack.
-  const fresh = (r) => CARDS.some((c) => c.rarity === r.id && !used.has(c.id));
+function rollSlot(weights, boost, inPack = new Set(), owned = new Set()) {
+  // Never repeat a card within this pack: skip rarities this pack has used up.
   const table = slotTable(weights, boost);
-  const available = table.filter((x) => fresh(x.rarity));
+  const open = (r) => CARDS.some((c) => c.rarity === r.id && !inPack.has(c.id));
+  const available = table.filter((x) => open(x.rarity));
+  // Rarity odds are the normal ones; ownership never changes them.
   const { rarity } = pickWeighted(available.length ? available : table, (x) => x.weight);
-  const pool = CARDS.filter((c) => c.rarity === rarity.id);
-  const unused = pool.filter((c) => !used.has(c.id));
-  const card = pickWeighted(unused.length ? unused : pool, cardWeight);
+  const all = CARDS.filter((c) => c.rarity === rarity.id);
+  const pool = all.filter((c) => !inPack.has(c.id));
+  const candidates = pool.length ? pool : all;
+  // Within that rarity, prefer cards the player doesn't own yet.
+  const fresh = candidates.filter((c) => !owned.has(c.id));
+  const card = pickWeighted(fresh.length ? fresh : candidates, cardWeight);
   return { card, shiny: Math.random() < ODDS.shiny };
 }
 
@@ -45,21 +49,24 @@ function rollSlot(weights, boost, used = new Set()) {
  * Open one booster pack.
  * @param boost    lucky charm active
  * @param forceHit card to put in the rare slot (preview mode)
+ * @param exclude  ids the player already owns; within the rolled rarity an unowned
+ *                 card is picked first, so doubles only come once a rarity is complete
  * @returns {{ card, shiny: boolean, hit: boolean }[]}  last entry is the rare slot
  */
-export function rollPack({ boost = false, forceHit = null } = {}) {
+export function rollPack({ boost = false, forceHit = null, exclude = [] } = {}) {
   const pack = [];
   const used = new Set();
+  const owned = new Set(exclude);
   const track = (pull) => {
     if (PACK.noDuplicates) used.add(pull.card.id);
     return pull;
   };
   if (forceHit) used.add(forceHit.id);
-  for (let i = 0; i < PACK.size - 1; i++) pack.push(track({ ...rollSlot(PACK.fillerWeights, false, used), hit: false }));
+  for (let i = 0; i < PACK.size - 1; i++) pack.push(track({ ...rollSlot(PACK.fillerWeights, false, used, owned), hit: false }));
   let last;
   if (forceHit) last = { card: forceHit, shiny: false };
   else if (SPECIAL_CARDS.length && Math.random() < ODDS.error) last = { card: pickWeighted(SPECIAL_CARDS, cardWeight), shiny: false };
-  else last = rollSlot(PACK.hitWeights, boost, used);
+  else last = rollSlot(PACK.hitWeights, boost, used, owned);
   pack.push({ ...last, hit: true });
   return pack;
 }
