@@ -1,4 +1,4 @@
-import { INCLUDE_RETIRED_CARDS } from '../config.js';
+import { INCLUDE_RETIRED_CARDS } from '../config.js?v=20261001222331';
 
 // ============================================================================
 //  THE CARDS

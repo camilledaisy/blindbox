@@ -1,12 +1,12 @@
-import { h } from '../lib/dom.js';
-import { store } from '../lib/store.js';
-import { sfx } from '../lib/sfx.js';
-import { rarityById, packChance, fmtOneIn, fmtPct } from '../lib/gacha.js';
-import { attachTilt } from '../lib/tilt.js';
-import { openModal, toast } from '../lib/ui.js';
-import { saveCardImage } from '../lib/cardImage.js';
-import { Card } from './Card.js';
-import { RarityBadge } from './RarityBadge.js';
+import { h } from '../lib/dom.js?v=20261001222331';
+import { store } from '../lib/store.js?v=20261001222331';
+import { sfx } from '../lib/sfx.js?v=20261001222331';
+import { rarityById, packChance, fmtOneIn, fmtPct } from '../lib/gacha.js?v=20261001222331';
+import { attachTilt } from '../lib/tilt.js?v=20261001222331';
+import { openModal, toast } from '../lib/ui.js?v=20261001222331';
+import { saveCardImage } from '../lib/cardImage.js?v=20261001222331';
+import { Card } from './Card.js?v=20261001222331';
+import { RarityBadge } from './RarityBadge.js?v=20261001222331';
 
 const fmtDate = (ts) => (ts ? new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : '—');
 

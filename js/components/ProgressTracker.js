@@ -1,4 +1,4 @@
-import { h } from '../lib/dom.js';
+import { h } from '../lib/dom.js?v=20261001222331';
 
 /** COLLECTION  7 / 10 discovered  + segmented HP-style bar. */
 export function ProgressTracker({ discovered, total, shinies = 0, packs = 0 }) {

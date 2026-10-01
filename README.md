@@ -97,3 +97,13 @@ The light that spills out when you tear the pack is also a hint: pink or rainbow
 - Shiny variants of any card (1 in 32)
 - Milestone messages as you open more boxes
 </details>
+
+## Publishing updates
+
+Before each commit that changes the site, run:
+
+```sh
+python3 tools/bump-version.py
+```
+
+This stamps a fresh version on every CSS/JS link and writes `version.json`. Phones holding an old cached copy notice the new version and reload themselves once, so friends always see the latest cards.

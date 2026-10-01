@@ -1,7 +1,7 @@
-import { h } from '../lib/dom.js';
-import { store } from '../lib/store.js';
-import { sfx } from '../lib/sfx.js';
-import { openModal, toast } from '../lib/ui.js';
+import { h } from '../lib/dom.js?v=20261001222331';
+import { store } from '../lib/store.js?v=20261001222331';
+import { sfx } from '../lib/sfx.js?v=20261001222331';
+import { openModal, toast } from '../lib/ui.js?v=20261001222331';
 
 /** First-visit prompt: who's opening packs? Saved on this device. */
 export function askForName() {

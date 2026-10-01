@@ -1,21 +1,21 @@
 // App bootstrap: views, routing, nav, wiring components together.
-import { h, $, $$, pick, pixelStar } from './lib/dom.js';
-import { MESSAGES, ODDS, RARITIES, PACK } from './config.js';
-import { CARDS } from './data/cards.js';
-import { store } from './lib/store.js';
-import { sfx } from './lib/sfx.js';
-import { slotOdds, fmtPct, fmtOneIn } from './lib/gacha.js';
-import { attachTilt } from './lib/tilt.js';
-import { toast } from './lib/ui.js';
-import { initEasterEggs, logoSecret } from './lib/easterEggs.js';
-import { initTracking } from './lib/tracker.js';
-import { askForName } from './components/NamePrompt.js';
-import { CardPack } from './components/CardPack.js';
-import { createReveal } from './components/CardReveal.js';
-import { CollectionGrid } from './components/CollectionGrid.js';
-import { ProgressTracker } from './components/ProgressTracker.js';
-import { RarityBadge } from './components/RarityBadge.js';
-import { openCardDetail } from './components/CardDetail.js';
+import { h, $, $$, pick, pixelStar } from './lib/dom.js?v=20261001222331';
+import { MESSAGES, ODDS, RARITIES, PACK } from './config.js?v=20261001222331';
+import { CARDS } from './data/cards.js?v=20261001222331';
+import { store } from './lib/store.js?v=20261001222331';
+import { sfx } from './lib/sfx.js?v=20261001222331';
+import { slotOdds, fmtPct, fmtOneIn } from './lib/gacha.js?v=20261001222331';
+import { attachTilt } from './lib/tilt.js?v=20261001222331';
+import { toast } from './lib/ui.js?v=20261001222331';
+import { initEasterEggs, logoSecret } from './lib/easterEggs.js?v=20261001222331';
+import { initTracking } from './lib/tracker.js?v=20261001222331';
+import { askForName } from './components/NamePrompt.js?v=20261001222331';
+import { CardPack } from './components/CardPack.js?v=20261001222331';
+import { createReveal } from './components/CardReveal.js?v=20261001222331';
+import { CollectionGrid } from './components/CollectionGrid.js?v=20261001222331';
+import { ProgressTracker } from './components/ProgressTracker.js?v=20261001222331';
+import { RarityBadge } from './components/RarityBadge.js?v=20261001222331';
+import { openCardDetail } from './components/CardDetail.js?v=20261001222331';
 
 // ------------------------------------------------------------------ home
 const homePack = CardPack();

@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Silkscreen:wght@400;700&family=Titan+One&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/pack.css" />
-  <link rel="stylesheet" href="css/card.css" />
-  <link rel="stylesheet" href="css/reveal.css" />
-  <link rel="stylesheet" href="css/dex.css" />
+  <link rel="stylesheet" href="css/base.css?v=20261001222331" />
+  <link rel="stylesheet" href="css/pack.css?v=20261001222331" />
+  <link rel="stylesheet" href="css/card.css?v=20261001222331" />
+  <link rel="stylesheet" href="css/reveal.css?v=20261001222331" />
+  <link rel="stylesheet" href="css/dex.css?v=20261001222331" />
 </head>
 <body data-page="home">
   <div class="marquee" aria-hidden="true">
@@ -97,6 +97,26 @@
   <script>
     if (location.protocol === 'file:') document.getElementById('file-warning').hidden = false;
   </script>
-  <script type="module" src="js/main.js"></script>
+  <script>
+    // If this page is an old saved copy, reload once with the newest version.
+    (function () {
+      const BUILD = '20261001222331';
+      fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => {
+          if (!j || !j.v || j.v === BUILD) return;
+          const key = 'cc-reloaded-' + j.v;
+          try {
+            if (sessionStorage.getItem(key)) return;
+            sessionStorage.setItem(key, '1');
+          } catch (e) { return; }
+          const url = new URL(location.href);
+          url.searchParams.set('v', j.v);
+          location.replace(url.toString());
+        })
+        .catch(() => {});
+    })();
+  </script>
+  <script type="module" src="js/main.js?v=20261001222331"></script>
 </body>
 </html>

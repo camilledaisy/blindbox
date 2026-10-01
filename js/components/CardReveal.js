@@ -3,20 +3,20 @@
 //   2. cards slide out; swipe / tap through them one by one
 //   3. the last card is the rare slot: face-down, charges up by rarity, tap to flip
 //   4. summary of the whole pack
-import { h, $, clamp, rand, replayClass, reducedMotion } from '../lib/dom.js';
-import { MESSAGES, ODDS, PACK } from '../config.js';
-import { rollPack, rarityById, hitChance, fmtOneIn, cardById } from '../lib/gacha.js';
-import { store } from '../lib/store.js';
-import { sfx } from '../lib/sfx.js';
-import { shake } from '../lib/shake.js';
-import { ParticleField } from '../lib/particles.js';
-import { attachTilt } from '../lib/tilt.js';
-import { toast } from '../lib/ui.js';
-import { saveCardImage } from '../lib/cardImage.js';
-import { CardPack } from './CardPack.js';
-import { Card } from './Card.js';
-import { RarityBadge } from './RarityBadge.js';
-import { openCardDetail } from './CardDetail.js';
+import { h, $, clamp, rand, replayClass, reducedMotion } from '../lib/dom.js?v=20261001222331';
+import { MESSAGES, ODDS, PACK } from '../config.js?v=20261001222331';
+import { rollPack, rarityById, hitChance, fmtOneIn, cardById } from '../lib/gacha.js?v=20261001222331';
+import { store } from '../lib/store.js?v=20261001222331';
+import { sfx } from '../lib/sfx.js?v=20261001222331';
+import { shake } from '../lib/shake.js?v=20261001222331';
+import { ParticleField } from '../lib/particles.js?v=20261001222331';
+import { attachTilt } from '../lib/tilt.js?v=20261001222331';
+import { toast } from '../lib/ui.js?v=20261001222331';
+import { saveCardImage } from '../lib/cardImage.js?v=20261001222331';
+import { CardPack } from './CardPack.js?v=20261001222331';
+import { Card } from './Card.js?v=20261001222331';
+import { RarityBadge } from './RarityBadge.js?v=20261001222331';
+import { openCardDetail } from './CardDetail.js?v=20261001222331';
 
 const TAU = Math.PI * 2;
 const RAINBOW = ['#ff5e7e', '#ffb13b', '#ffe45e', '#5ee6a0', '#5ec8ff', '#a47bff', '#ff7eea'];

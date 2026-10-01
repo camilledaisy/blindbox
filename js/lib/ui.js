@@ -1,6 +1,6 @@
 // Small shared UI bits: toasts and a modal shell.
-import { h } from './dom.js';
-import { sfx } from './sfx.js';
+import { h } from './dom.js?v=20261001222331';
+import { sfx } from './sfx.js?v=20261001222331';
 
 export function toast(text, { icon = '✦', ms = 3200 } = {}) {
   const root = document.getElementById('toasts');
