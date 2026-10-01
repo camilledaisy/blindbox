@@ -116,5 +116,11 @@ export const TRACKING = {
   endpoint: 'https://script.google.com/macros/s/AKfycbxdSUlx5UCggh96N-nbyilVb5LmyZELxFafCku1QKgFtAGuYmFcbO6hq7xBJCQs-rjqqw/exec',
 };
 
+/**
+ * TRIAL: include every retired photo as well (61 cards instead of 25).
+ * Set to false to go back to the 25-card birthday set.
+ */
+export const INCLUDE_RETIRED_CARDS = true;
+
 // Kept as-is so collections saved before the rename survive.
 export const STORAGE_KEY = 'camille-blind-box/v1';

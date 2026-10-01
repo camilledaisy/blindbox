@@ -1,3 +1,5 @@
+import { INCLUDE_RETIRED_CARDS } from '../config.js';
+
 // ============================================================================
 //  THE CARDS
 //  Add, remove or edit cards here — the whole site updates automatically.
@@ -20,7 +22,7 @@
 //    weight        optional: relative chance WITHIN its rarity (default 1)
 // ============================================================================
 
-export const CARDS = [
+const BIRTHDAY_SET = [
   {
     id: '057',
     no: '001',
@@ -823,6 +825,11 @@ export const RETIRED_CARDS = [
     emoji: '🧣',
   },
 ];
+
+/** The cards in play. With INCLUDE_RETIRED_CARDS on, retired photos join as 026 onwards. */
+export const CARDS = INCLUDE_RETIRED_CARDS
+  ? [...BIRTHDAY_SET, ...RETIRED_CARDS.map((c, i) => ({ ...c, no: String(BIRTHDAY_SET.length + i + 1).padStart(3, '0') }))]
+  : BIRTHDAY_SET;
 
 /** Joke cards that only drop via ODDS.error in config.js. */
 export const SPECIAL_CARDS = [
